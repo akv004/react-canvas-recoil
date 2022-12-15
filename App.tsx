@@ -1,22 +1,25 @@
 import * as React from 'react';
 import './style.css';
+import { selector, useRecoilState, useRecoilValue } from 'recoil';
+import { textState } from './store';
 
 export default function App() {
 
+  const [text, setText] = useRecoilState(textState);
   const canvas = React.useRef();
   let ctx = null;
   React.useEffect(() => {
     // dynamically assign the width and height to canvas
     const canvasEle = canvas.current;
-    canvasEle.width = canvasEle.clientWidth;
-    canvasEle.height = canvasEle.clientHeight;
+    canvasEle.width = 1200;
+    canvasEle.height = 1200;
  
     // get context of the canvas
     ctx = canvasEle.getContext("2d");
   }, []);
 
   React.useEffect(() => {
-    writeText({ text: 'Clue Mediator!', x: 180, y: 70 });
+    writeText({ text: text, x: 180, y: 70 });
  
     writeText({ text: 'Welcome to ', x: 180, y: 70 }, { textAlign: 'right' });
  
