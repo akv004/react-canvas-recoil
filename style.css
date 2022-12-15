@@ -7,4 +7,4 @@ canvas { background:rgb(160, 241, 180) }
 .wrap, .wrap canvas { width:400px; height:300px }
 .wrap { position:relative }
 .wrap > * { position:absolute }
-#go { top:20px; left:40px; width:150px; height:60px }
+#go { top:220px; left:40px; width:150px; height:60px }
