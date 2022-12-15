@@ -11,8 +11,8 @@ export default function App() {
   React.useEffect(() => {
     // dynamically assign the width and height to canvas
     const canvasEle = canvas.current;
-    canvasEle.width = 1200;
-    canvasEle.height = 1200;
+    canvasEle.width = 800;
+    canvasEle.height = 400;
  
     // get context of the canvas
     ctx = canvasEle.getContext("2d");
@@ -42,10 +42,11 @@ export default function App() {
   }
 
   return (
-    <div>
+    <div class="wrap">
       <h1>Hello StackBlitz!</h1>
       <p>Start editing to see some magic happen :)</p>
       <canvas ref={canvas}></canvas>
+      <textarea id="go">Hello world</textarea>
     </div>
   );
 }
