@@ -4,7 +4,6 @@ import { selector, useRecoilState, useRecoilValue } from 'recoil';
 import { textState } from './store';
 
 export default function App() {
-
   const [text, setText] = useRecoilState(textState);
   const canvas = React.useRef();
   let ctx = null;
@@ -13,25 +12,42 @@ export default function App() {
     const canvasEle = canvas.current;
     canvasEle.width = 800;
     canvasEle.height = 400;
- 
+
     // get context of the canvas
-    ctx = canvasEle.getContext("2d");
+    ctx = canvasEle.getContext('2d');
   }, []);
 
   React.useEffect(() => {
     writeText({ text: text, x: 180, y: 70 });
- 
+
     writeText({ text: 'Welcome to ', x: 180, y: 70 }, { textAlign: 'right' });
- 
-    writeText({ text: 'www.cluemediator.com', x: 180, y: 130 }, { fontSize: 30, color: 'green', textAlign: 'center' });
- 
-    writeText({ text: 'Like, Share and Subscribe...', x: 180, y: 200 }, { fontSize: 14, fontFamily: 'cursive', color: 'blue', textAlign: 'center' });
+
+    writeText(
+      { text: 'www.cluemediator.com', x: 180, y: 130 },
+      { fontSize: 30, color: 'green', textAlign: 'center' }
+    );
+
+    writeText(
+      { text: 'Like, Share and Subscribe...', x: 180, y: 200 },
+      {
+        fontSize: 14,
+        fontFamily: 'cursive',
+        color: 'blue',
+        textAlign: 'center',
+      }
+    );
   }, []);
 
   const writeText = (info, style = {}) => {
     const { text, x, y } = info;
-    const { fontSize = 20, fontFamily = 'Arial', color = 'black', textAlign = 'left', textBaseline = 'top' } = style;
- 
+    const {
+      fontSize = 20,
+      fontFamily = 'Arial',
+      color = 'black',
+      textAlign = 'left',
+      textBaseline = 'top',
+    } = style;
+
     ctx.beginPath();
     ctx.font = fontSize + 'px ' + fontFamily;
     ctx.textAlign = textAlign;
@@ -39,14 +55,18 @@ export default function App() {
     ctx.fillStyle = color;
     ctx.fillText(text, x, y);
     ctx.stroke();
-  }
+  };
 
+  const move = () => {
+    console.log('move');
+  };
   return (
     <div class="wrap">
       <h1>Hello StackBlitz!</h1>
       <p>Start editing to see some magic happen :)</p>
       <canvas ref={canvas}></canvas>
       <textarea id="go">Hello world</textarea>
+      <button onClick={move}>Move</button>
     </div>
   );
 }
